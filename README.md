@@ -49,7 +49,7 @@ int main() {
 
 ### Get Library
 #### 1. **Download and extract**:
-
+From [Release](https://github.com/Jin-OK/cpplog-simple/releases) download.
 #### 2.Library Build
 ```bash
 git clone https://github.com/Jin-OK/cpplog-simple.git
