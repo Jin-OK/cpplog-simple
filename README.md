@@ -16,26 +16,36 @@
 - 📦 **CMake support** for easy integration
 
 ## Result
-<img src=".git\simplelog\test.png" alt="SimpleLog Screenshot" width="600"/>
+<img src=".github\simplelog\test.png" alt="SimpleLog Screenshot" width="600"/>
 
 ## Quick Start
 
 ### How Usage ? 
-> After building the library, you can use it in your project like this:
+> After building the library, you can test it in this project like this:
 ```bash
 ./build/bin/logtest
 ```
+
+### Example
 
 ```cpp
 #include "simplelog.hpp"
 
 int main() {
+    // First, through macro calls (recommended)
     LOG_INFO("Application started");
     LOG_WARN("Low memory detected: ", 1024, "MB available");
-    LOG_ERROR("Failed to open file: ", "data.txt");
+    LOG_ERROR("Failed to open file: ", "config.txt", " with error code: ", 2);
+
+    // The second is called by invoking a static class
+    LOG().log(LogLevel::INFO, "This is a test message with multiple arguments: ", 42, " and ", 3.14);
+    LOG().log(LogLevel::WARN, "This is a warning message with a string: ", "Warning!");
+    LOG().log(LogLevel::ERR, "Failed to open file: ", "data.txt", " with error code: ", 5);
+    
     return 0;
 }
 ```
+> ⚠️：Note that the second method uses WARN and ERROR where the error is not passed in!
 
 ### Get Library
 #### 1. **Download and extract**:
@@ -77,7 +87,7 @@ target_link_libraries(your_target PRIVATE simplelog::simplelog)
 
 ## About the Author
 
-I'm a hobbyist C++ developer who created this library to learn modern C++ concepts. SimpleLog represents my journey in understanding:
+I'm a hobbyist C++ student developer who created this library to learn modern C++ concepts. SimpleLog represents my journey in understanding:
 
 - PIMPL pattern
 - CMake build systems
